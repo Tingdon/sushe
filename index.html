@@ -202,6 +202,22 @@
   .success-block .icon{font-size:56px;margin-bottom:12px}
   .success-block h2{font-size:18px;font-weight:400;color:#333;margin-bottom:6px}
   .success-block p{font-size:13px;color:#999;margin-bottom:6px}
+
+  @media (max-width:360px){
+    .pay-top .pay-amount{font-size:42px}
+    .pay-mid{gap:10px;margin-bottom:18px}
+    .pay-mid .box{padding:20px 10px}
+    .pay-mid .box .num{font-size:28px}
+    .pay-mid .box .txt{font-size:13px;margin-top:6px}
+    .fee-row{padding:16px 12px}
+    .fee-row .fee-name{font-size:15px}
+    .fee-row .fee-price{font-size:15px;margin-right:12px}
+    .fee-row .fee-check{width:26px;height:26px;font-size:16px}
+    .pay-bar{padding:10px 12px}
+    .pay-bar .total{font-size:16px}
+    .pay-bar .total span{font-size:24px}
+    .pay-bar .btn-pay{font-size:24px;padding:10px 24px;letter-spacing:4px}
+  }
 </style>
 </head>
 <body>
@@ -264,7 +280,7 @@
         </div>
       </div>
       <div class="pay-bot">
-        <div class="pay-subtitle">2026年度代缴信息</div>
+        <div class="pay-subtitle">2026年度待缴信息</div>
         <div class="fee-list" id="feeList"></div>
       </div>
     </div>
