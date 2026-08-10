@@ -104,30 +104,31 @@
     min-height:100vh;
   }
 
-  .pay-top{padding:8px 0 4px;text-align:center}
-  .pay-top .pay-label{font-size:12px;color:#999}
-  .pay-top .pay-amount{font-size:20px;font-weight:800;color:#1a56db;letter-spacing:2px;line-height:1.2}
+  .pay-top{padding:12px 0 6px;text-align:center}
+  .pay-top .pay-label{font-size:14px;color:#999}
+  .pay-top .pay-amount{font-size:32px;font-weight:800;color:#1a56db;letter-spacing:3px;line-height:1.2}
 
-  .pay-mid{display:flex;gap:8px;margin-bottom:10px}
-  .pay-mid .box{flex:1;border:1.5px solid #1a56db;padding:8px 6px;text-align:center;border-radius:6px;background:rgba(255,255,255,.7)}
-  .pay-mid .box .num{font-size:13px;font-weight:800;color:#1a56db;line-height:1.3}
-  .pay-mid .box .txt{font-size:10px;color:#999;margin-top:2px}
+  .pay-mid{display:flex;gap:12px;margin-bottom:14px}
+  .pay-mid .box{flex:1;border:2px solid #1a56db;padding:14px 8px;text-align:center;border-radius:8px;background:rgba(255,255,255,.7)}
+  .pay-mid .box .num{font-size:20px;font-weight:800;color:#1a56db;line-height:1.3}
+  .pay-mid .box .txt{font-size:12px;color:#999;margin-top:4px}
 
-  .pay-bot .pay-subtitle{font-size:13px;color:#555;margin-bottom:6px;font-weight:600}
+  .pay-bot .pay-subtitle{font-size:15px;color:#555;margin-bottom:10px;font-weight:600}
 
-  .fee-list{border:1px solid #d0d5dd;border-radius:6px;overflow-y:auto}
-  .fee-row{display:flex;align-items:center;padding:6px 8px;border-bottom:1px solid #f0f0f0;background:rgba(255,255,255,.85);transition:background .1s}
+  .fee-list{border:1px solid #d0d5dd;border-radius:8px;overflow-y:auto;max-height:40vh}
+  .fee-row{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid #f0f0f0;background:rgba(255,255,255,.85);transition:background .1s}
   .fee-row:last-child{border-bottom:none}
   .fee-row:active{background:rgba(240,244,255,.9)}
-  .fee-row .fee-name{flex:1;font-size:12px;color:#333;letter-spacing:1px}
-  .fee-row .fee-price{font-size:12px;color:#1a56db;margin-right:10px;font-weight:600;letter-spacing:1px}
-  .fee-row .fee-check{width:18px;height:18px;border:2px solid #ccc;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:12px;color:transparent;transition:all .15s}
+  .fee-row .fee-name{flex:1;font-size:14px;color:#333;letter-spacing:2px}
+  .fee-row .fee-price{font-size:14px;color:#1a56db;margin-right:16px;font-weight:600;letter-spacing:1px}
+  .fee-row .fee-check{width:24px;height:24px;border:2.5px solid #ccc;border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:14px;color:transparent;transition:all .15s}
   .fee-row .fee-check.checked{border-color:#1a56db;color:#1a56db;background:rgba(238,243,255,.8)}
 
-  .pay-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:414px;background:#fff;border-top:1px solid #e0e0e0;display:flex;align-items:center;padding:8px 12px;z-index:200;box-shadow:0 -2px 8px rgba(0,0,0,.08)}
-  .pay-bar .total{flex:1;font-size:13px;color:#333}
-  .pay-bar .total span{font-size:16px;font-weight:800;color:#1a56db}
-  .pay-bar .btn-pay{background:#1a56db;color:#fff;font-size:16px;font-weight:800;padding:8px 20px;border-radius:6px;border:none;cursor:pointer;letter-spacing:4px;box-shadow:0 2px 6px rgba(26,86,219,.35)}
+  .pay-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:414px;background:#fff;border-top:1px solid #e0e0e0;display:flex;align-items:center;padding:10px 16px;z-index:200;box-shadow:0 -2px 10px rgba(0,0,0,.08)}
+  .pay-bar .total{flex:1;font-size:16px;color:#333}
+  .pay-bar .total span{font-size:20px;font-weight:800;color:#1a56db}
+  .pay-bar .btn-pay{background:#1a56db;color:#fff;font-size:22px;font-weight:800;padding:10px 28px;border-radius:8px;border:none;cursor:pointer;letter-spacing:6px;box-shadow:0 2px 10px rgba(26,86,219,.35)}
+  .pay-bar .btn-pay:disabled{background:#b0bec5;cursor:not-allowed;box-shadow:none}
   .pay-bar .btn-pay:active{opacity:.85;transform:scale(.97)}
   .countdown-ring{width:100px;height:100px;margin:0 auto 16px;position:relative}
   .countdown-ring svg{transform:rotate(-90deg)}
@@ -204,19 +205,19 @@
   .success-block p{font-size:13px;color:#999;margin-bottom:6px}
 
   @media (max-width:360px){
-    .pay-top .pay-amount{font-size:16px}
-    .pay-mid{gap:5px;margin-bottom:6px}
-    .pay-mid .box{padding:5px 3px}
-    .pay-mid .box .num{font-size:11px}
-    .pay-mid .box .txt{font-size:9px;margin-top:1px}
-    .fee-row{padding:4px 6px}
-    .fee-row .fee-name{font-size:10px}
-    .fee-row .fee-price{font-size:10px;margin-right:6px}
-    .fee-row .fee-check{width:15px;height:15px;font-size:10px}
-    .pay-bar{padding:5px 8px}
-    .pay-bar .total{font-size:11px}
-    .pay-bar .total span{font-size:13px}
-    .pay-bar .btn-pay{font-size:13px;padding:6px 14px;letter-spacing:2px}
+    .pay-top .pay-amount{font-size:26px}
+    .pay-mid{gap:8px;margin-bottom:10px}
+    .pay-mid .box{padding:10px 5px}
+    .pay-mid .box .num{font-size:16px}
+    .pay-mid .box .txt{font-size:10px;margin-top:2px}
+    .fee-row{padding:7px 10px}
+    .fee-row .fee-name{font-size:12px}
+    .fee-row .fee-price{font-size:12px;margin-right:10px}
+    .fee-row .fee-check{width:20px;height:20px;font-size:12px}
+    .pay-bar{padding:8px 10px}
+    .pay-bar .total{font-size:14px}
+    .pay-bar .total span{font-size:17px}
+    .pay-bar .btn-pay{font-size:18px;padding:8px 18px;letter-spacing:3px}
   }
 </style>
 </head>
@@ -252,12 +253,12 @@
 
   <div class="page" id="page-info">
     <div class="info-list">
-      <div class="info-row"><span class="label">姓名</span><input class="info-input" id="inputName" value="张三" placeholder="请输入姓名"></div>
+      <div class="info-row"><span class="label">姓名</span><input class="info-input" id="inputName" value="" placeholder="请输入姓名"></div>
       <div class="info-row"><span class="label">学号</span><span class="value">20240101001</span></div>
       <div class="info-row"><span class="label">学院</span><span class="value">计算机科学与技术学院</span></div>
       <div class="info-row"><span class="label">专业</span><span class="value">软件工程</span></div>
       <div class="info-row"><span class="label">班级</span><span class="value">软工2401班</span></div>
-      <div class="info-row"><span class="label">性别</span><span class="value">男</span></div>
+      <div class="info-row"><span class="label">性别</span><select class="info-input" id="inputGender" style="width:140px"><option value="">请选择性别</option><option value="男">男</option><option value="女">女</option></select></div>
       <div class="info-row"><span class="label">手机号</span><span class="value">138****6789</span></div>
     </div>
     <div class="btn-wrap"><button class="btn btn-primary" onclick="confirmName()">确定</button></div>
@@ -368,6 +369,7 @@ function showPage(id,title){
 }
 
 function goBack(){
+  clearInterval(window._pt);
   if(state.history.length>0){var p=state.history.pop();showPage(p.id,p.title);if(p.onEnter)p.onEnter()}
   else showPage('page-home');
 }
@@ -375,6 +377,8 @@ function goBack(){
 function confirmName(){
   var name=document.getElementById('inputName').value.trim();
   if(!name){toast('请填写姓名');return}
+  var gender=document.getElementById('inputGender').value.trim();
+  if(!gender){toast('请填写性别');return}
   if(!state.nameDone){
     state.nameDone=true;state.step=2;
     var s1=document.getElementById('step1');s1.classList.remove('current');s1.classList.add('completed');
@@ -396,7 +400,7 @@ function showInfo(){pushPage('page-info','个人信息')}
 function goPay(){if(state.step<2){toast('请先完善个人信息');return}pushPage('page-pay','缴费/绿色通道',startPay)}
 function goDorm(){if(!state.payDone){toast('请先完成学费缴纳');return}pushPage('page-room','选择房间',renderRooms)}
 
-var feeChecked=[true,true,true,true,true];
+var feeChecked=[false,false,false,false,false];
 
 function startPay(){
   if(state.payDone){
@@ -433,14 +437,15 @@ function toggleFee(i){
 }
 
 function updatePayBar(){
-  var sum=0;feeChecked.forEach(function(v,i){if(v)sum+=CONFIG.fees[i].price});
+  var sum=0;var allChecked=true;feeChecked.forEach(function(v,i){if(v)sum+=CONFIG.fees[i].price;else allChecked=false});
   document.getElementById('barTotal').innerHTML='合计 <span>&yen;'+sum+'</span>';
   document.getElementById('debtNum').innerHTML='&yen;'+sum;
+  document.getElementById('btnPay').disabled=!allChecked;
 }
 
 function doPay(){
-  var sum=0;feeChecked.forEach(function(v,i){if(v)sum+=CONFIG.fees[i].price});
-  if(sum===0){toast('请至少勾选一项费用');return}
+  var sum=0;var allChecked=true;feeChecked.forEach(function(v,i){if(v)sum+=CONFIG.fees[i].price;else allChecked=false});
+  if(!allChecked){toast('请缴齐所有费用后再提交');return}
   document.getElementById('payMain').style.display='none';
   document.getElementById('payProcessing').style.display='block';
   document.getElementById('payBar').style.display='none';
@@ -508,7 +513,7 @@ function submitBed(){
 
 function resetAll(){
   state.step=1;state.payDone=false;state.nameDone=false;  state.selectedRoom=null;state.selectedBed=null;state.history=[];clearInterval(window._pt);
-  feeChecked=[true,true,true,true,true];
+  feeChecked=[false,false,false,false,false];
   var s1=document.getElementById('step1');s1.classList.remove('completed');s1.classList.add('current');
   s1.querySelector('.step-mark').innerHTML='&#10071;';
   var s2=document.getElementById('step2');s2.classList.remove('current','completed');s2.classList.add('locked');
