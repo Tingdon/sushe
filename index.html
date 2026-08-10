@@ -204,6 +204,67 @@
   .success-block h2{font-size:18px;font-weight:400;color:#333;margin-bottom:6px}
   .success-block p{font-size:13px;color:#999;margin-bottom:6px}
 
+  /* ===== Watermark Overlay ===== */
+  .wm-overlay{
+    position:absolute;top:0;left:0;right:0;bottom:0;
+    z-index:999;
+    background:rgba(0,0,0,0.88);
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    padding:30px;
+  }
+  .wm-overlay.show{display:flex}
+  .wm-overlay img{
+    max-width:90%;
+    max-height:55vh;
+    border-radius:8px;
+    box-shadow:0 4px 24px rgba(0,0,0,0.6);
+    object-fit:contain;
+  }
+  .wm-overlay .wm-text{
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    margin-top:18px;
+    letter-spacing:3px;
+    opacity:0.85;
+  }
+  .wm-overlay .wm-sub{
+    color:rgba(255,255,255,0.5);
+    font-size:12px;
+    margin-top:8px;
+    letter-spacing:1.5px;
+  }
+  .wm-overlay .wm-hint{
+    color:rgba(255,255,255,0.35);
+    font-size:11px;
+    margin-top:28px;
+    animation:wmPulse 2s infinite;
+  }
+  @keyframes wmPulse{
+    0%,100%{opacity:0.3}
+    50%{opacity:0.8}
+  }
+
+  /* ===== Watermark ===== */
+  .watermark{
+    position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+    width:100%;max-width:414px;
+    text-align:center;padding:6px 12px 8px;
+    font-size:11px;font-weight:600;
+    color:#666;
+    opacity:0.45;
+    z-index:190;
+    pointer-events:none;
+    letter-spacing:1.5px;
+    background:rgba(255,255,255,0.6);
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+  }
+
   @media (max-width:360px){
     .pay-top .pay-amount{font-size:26px}
     .pay-mid{gap:8px;margin-bottom:10px}
@@ -330,6 +391,13 @@
       <p id="doneBed"></p>
       <div class="btn-wrap"><button class="btn btn-outline" onclick="resetAll()">返回首页</button></div>
     </div>
+  </div>
+
+  <div class="wm-overlay" id="wmOverlay" onclick="closeWM()">
+    <img src="images/88.jpg" alt="">
+    <div class="wm-text">转发必究</div>
+    <div class="wm-sub">最终解释权归启明星所有</div>
+    <div class="wm-hint">点击任意位置继续</div>
   </div>
 </div>
 
@@ -506,12 +574,17 @@ function submitBed(){
   var b=r.beds.find(function(x){return x.id===state.selectedBed});
   document.getElementById('doneRoom').textContent='房间：'+r.name;
   document.getElementById('doneBed').textContent='床位：'+b.label;
-  pushPage('page-done','提交成功');
+  document.getElementById('wmOverlay').classList.add('show');
   var s3=document.getElementById('step3');s3.classList.remove('current');s3.classList.add('completed');
   s3.querySelector('.step-mark').innerHTML='&#9989;';
 }
+function closeWM(){
+  document.getElementById('wmOverlay').classList.remove('show');
+  pushPage('page-done','提交成功');
+}
 
 function resetAll(){
+  document.getElementById('wmOverlay').classList.remove('show');
   state.step=1;state.payDone=false;state.nameDone=false;  state.selectedRoom=null;state.selectedBed=null;state.history=[];clearInterval(window._pt);
   feeChecked=[false,false,false,false,false];
   var s1=document.getElementById('step1');s1.classList.remove('completed');s1.classList.add('current');
@@ -525,5 +598,8 @@ function resetAll(){
   showPage('page-home');document.getElementById('btnBack').style.display='none';
 }
 </script>
+
+<div class="watermark">该项目由专业团队 cthhcys 出品 &nbsp; 转发必究</div>
+
 </body>
 </html>
