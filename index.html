@@ -265,6 +265,127 @@
     -webkit-backdrop-filter:blur(2px);
   }
 
+  /* ===== 新主页 ===== */
+  #page-home-new{
+    background:#fff;
+    min-height:100vh;
+    padding:0;
+    padding-bottom:70px;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+  }
+  #page-home-new:not(.active){display:none !important}
+
+  .draw-area{padding:20px 16px;width:100%;max-width:360px}
+  .draw-title{text-align:center;margin-bottom:40px}
+  .draw-title .dt-main{font-size:24px;font-weight:800;color:#333;letter-spacing:6px;display:block}
+  .draw-title .dt-sub{font-size:12px;color:#aaa;margin-top:8px;display:block;letter-spacing:2px}
+
+  .draw-btn-wrap{
+    width:100%;display:flex;justify-content:center;
+    margin-bottom:30px;
+  }
+  .draw-btn{
+    width:180px;height:180px;border-radius:50%;
+    background:linear-gradient(135deg,#1a56db,#3b82f6);
+    color:#fff;font-size:20px;font-weight:800;letter-spacing:5px;
+    border:none;cursor:pointer;
+    box-shadow:0 6px 24px rgba(26,86,219,.4),0 0 0 0 rgba(26,86,219,.3);
+    font-family:inherit;
+    animation:drawPulse 2s infinite;
+    transition:transform .15s;
+  }
+  .draw-btn:active{transform:scale(.92);box-shadow:0 3px 12px rgba(26,86,219,.4)}
+  .draw-btn.rolling{animation:none;background:linear-gradient(135deg,#e53e3e,#f56565);box-shadow:0 6px 24px rgba(229,62,62,.4)}
+  @keyframes drawPulse{
+    0%,100%{box-shadow:0 6px 24px rgba(26,86,219,.4),0 0 0 0 rgba(26,86,219,.3)}
+    50%{box-shadow:0 6px 24px rgba(26,86,219,.4),0 0 0 18px rgba(26,86,219,0)}
+  }
+
+  .draw-result{
+    width:100%;max-width:360px;padding:0 16px;
+    animation:fadeInUp .4s ease;
+  }
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+  .res-card{
+    border-radius:16px;padding:24px 18px;
+    background:#fff;
+    box-shadow:0 2px 20px rgba(0,0,0,.08);
+    border:2px solid #1a56db;
+    text-align:center;
+    margin-bottom:16px;
+  }
+  .res-card .res-label{font-size:12px;color:#999;letter-spacing:3px;margin-bottom:4px}
+  .res-card .res-college{font-size:20px;font-weight:800;color:#1a56db;letter-spacing:4px;margin-bottom:2px}
+  .res-card .res-building{font-size:32px;font-weight:800;color:#333;letter-spacing:8px}
+  .res-card .res-floor{font-size:15px;color:#666;margin-top:6px;letter-spacing:2px}
+
+  .draw-sim-link{text-align:center;padding-bottom:20px}
+
+  .draw-retry{
+    text-align:center;padding:6px 0 20px;
+  }
+  .draw-retry button{
+    background:none;border:1px solid #d0d5dd;
+    padding:10px 24px;font-size:13px;color:#666;
+    border-radius:8px;cursor:pointer;
+    font-family:inherit;font-weight:600;
+  }
+  .draw-retry button:active{background:#f5f5f5}
+
+  .draw-sim-link{text-align:center;padding-bottom:20px}
+  .draw-sim-link a{font-size:11px;color:#bbb;text-decoration:none}
+  .draw-sim-link a:active{color:#999}
+
+  .calc-section{margin-top:30px;padding:0 16px 20px;width:100%;max-width:360px}
+  .calc-section .calc-title{font-size:14px;font-weight:800;color:#333;text-align:center;margin-bottom:14px;letter-spacing:3px}
+  .calc-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
+  .calc-row label{font-size:13px;color:#666;white-space:nowrap;min-width:40px}
+  .calc-row input,.calc-row select{
+    flex:1;border:1px solid #d0d5dd;border-radius:6px;
+    padding:8px 10px;font-size:13px;color:#333;outline:none;
+    font-family:inherit;background:#fff;
+  }
+  .calc-row input:focus,.calc-row select:focus{border-color:#1a56db}
+  .calc-btn{
+    display:block;width:100%;padding:10px;
+    background:#1a56db;color:#fff;font-size:14px;font-weight:800;
+    border:none;border-radius:8px;cursor:pointer;
+    letter-spacing:4px;font-family:inherit;
+    margin-top:4px;
+  }
+  .calc-btn:active{opacity:.85}
+  .calc-result{
+    margin-top:12px;padding:14px 16px;border-radius:10px;
+    background:#f0fdf4;border:1px solid #16a34a;
+    font-size:13px;color:#333;line-height:1.8;
+    text-align:center;display:none;
+    animation:fadeInUp .3s ease;
+  }
+
+  #page-calc{
+    background:#fff;min-height:100vh;
+    padding:20px 16px;padding-bottom:70px;
+  }
+  #page-calc:not(.active){display:none !important}
+
+  .bottom-nav{
+    position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+    width:100%;max-width:414px;
+    display:flex;background:#fff;
+    border-top:1px solid #e5e7eb;
+    z-index:300;padding-bottom:2px;
+  }
+  .bottom-nav .nav-item{
+    flex:1;text-align:center;padding:10px 0 6px;
+    font-size:12px;color:#999;cursor:pointer;
+    background:none;border:none;font-family:inherit;
+    transition:color .2s;
+  }
+  .bottom-nav .nav-item .nav-icon{font-size:20px;display:block;margin-bottom:2px}
+  .bottom-nav .nav-item.active{color:#1a56db;font-weight:800}
+
   @media (max-width:360px){
     .pay-top .pay-amount{font-size:26px}
     .pay-mid{gap:8px;margin-bottom:10px}
@@ -292,7 +413,56 @@
     <span class="title" id="navTitle">抢宿舍模拟器</span>
   </div>
 
-  <div class="page active" id="page-home">
+  <div class="page active" id="page-home-new">
+    <div class="draw-area">
+      <div class="draw-title">
+        <span class="dt-sub">楼层与书院均由导员分配，该步仅模拟分配环节</span>
+        <span style="display:block;font-size:11px;color:#e53e3e;margin-top:6px;letter-spacing:1.5px">&#9888; 现实中导员会直接分配好楼层与书院，无此步骤</span>
+      </div>
+      <div class="draw-btn-wrap">
+        <button class="draw-btn" id="drawBtn" onclick="randomAssign()">&#127922;<br>开始<br>分配</button>
+      </div>
+      <div class="draw-result" id="drawResult" style="display:none"></div>
+      <div class="draw-retry" id="drawRetry" style="display:none">
+        <button onclick="retryDraw()">重新分配</button>
+      </div>
+      <div style="text-align:center;font-size:11px;color:#bbb;margin-top:24px;letter-spacing:1.5px">该项目由专业团队 cthhcys 出品 &nbsp; 转发必究</div>
+    </div>
+  </div>
+
+  <div class="page" id="page-calc">
+    <div style="max-width:360px;margin:0 auto">
+      <div class="calc-title">宿舍计算器</div>
+      <div class="calc-row">
+        <label>楼号</label>
+        <select id="calcBld"><option value="1">1号楼</option><option value="2">2号楼</option><option value="3">3号楼</option><option value="4">4号楼</option><option value="5">5号楼</option><option value="6">6号楼</option><option value="7">7号楼</option></select>
+      </div>
+      <div class="calc-row">
+        <label>楼层</label>
+        <input id="calcFloor" type="number" placeholder="如 3" min="1" max="12">
+        <label>宿舍号</label>
+        <input id="calcRoom" type="number" placeholder="如 01" min="1" max="32">
+      </div>
+      <div class="calc-row">
+        <label>床号</label>
+        <input id="calcBed" type="number" placeholder="如 4" min="1" max="8">
+      </div>
+      <button class="calc-btn" onclick="doCalc()">查询</button>
+      <div class="calc-result" id="calcResult"></div>
+      <div style="text-align:center;margin-top:20px">
+        <img src="images/88.jpg" style="max-width:100%;border-radius:8px" alt="">
+      </div>
+      <div style="text-align:center;font-size:11px;color:#bbb;margin-top:16px;letter-spacing:1.5px">该项目由专业团队 cthhcys 出品 &nbsp; 转发必究</div>
+      <div style="text-align:center;font-size:11px;color:#ccc;margin-top:4px;letter-spacing:1px">查询结果仅供参考</div>
+    </div>
+  </div>
+
+  <div class="bottom-nav" id="bottomNav">
+    <button class="nav-item active" id="navSim" onclick="switchTab('sim')"><span class="nav-icon">&#127922;</span>模拟分配</button>
+    <button class="nav-item" id="navCalc" onclick="switchTab('calc')"><span class="nav-icon">&#128208;</span>宿舍计算器</button>
+  </div>
+
+  <div class="page" id="page-home">
     <div class="step-cards">
       <div class="step-card current" id="step1" onclick="showInfo()">
         <div class="step-icon">1</div>
@@ -314,6 +484,7 @@
 
   <div class="page" id="page-info">
     <div class="info-list">
+      <div id="drawnInfo"></div>
       <div class="info-row"><span class="label">姓名</span><input class="info-input" id="inputName" value="" placeholder="请输入姓名"></div>
       <div class="info-row"><span class="label">学号</span><span class="value">20240101001</span></div>
       <div class="info-row"><span class="label">学院</span><span class="value">计算机科学与技术学院</span></div>
@@ -388,7 +559,7 @@
       <div class="icon">&#127881;</div>
       <h2>宿舍选择成功</h2>
       <p id="doneRoom"></p>
-      <p id="doneBed"></p>
+      <p id="doneBed" style="white-space:pre-line"></p>
       <div class="btn-wrap"><button class="btn btn-outline" onclick="resetAll()">返回首页</button></div>
     </div>
   </div>
@@ -402,6 +573,90 @@
 </div>
 
 <script>
+var COLLEGE_DATA = [
+  {
+    name:'润心书院',
+    buildings:[
+      {
+        no:'1号',capacity:6,layout:'上床下铺（混合）',
+        detail:'仅3-4号床为单人单桌\n其余1、2、5、6号床为两人一桌',
+        deskNote:'3-4号床：单人单桌；其余：两人一桌',
+        type:'six',
+        avoid:'203, 205, 225, 227',
+        avoidNote:'二楼无阳台（三楼对应303等同理）',
+        maxFloor:6
+      },
+      {
+        no:'2号',capacity:6,layout:'上床下铺（混合）',
+        detail:'仅3-4号床为单人单桌\n其余1、2、5、6号床为两人一桌',
+        deskNote:'3-4号床：单人单桌；其余：两人一桌',
+        type:'six',
+        avoid:'203, 205, 225, 227',
+        avoidNote:'二楼无阳台（三楼对应303等同理）',
+        maxFloor:6
+      }
+    ]
+  },
+  {
+    name:'文心书院',
+    buildings:[
+      {
+        no:'3号',capacity:8,layout:'混合布局',
+        detail:'奇尾号房间：4、8号床为上下床下铺，5、6号床为上下床上铺，其余1、2、3、7号床为上床下桌（两人一桌）\n偶尾号房间：3、7号床为上下床下铺，2、6号床为上下床上铺，其余1、4、5、8号床为上床下桌（两人一桌）',
+        deskNote:'奇数尾号：1/2/3/7上床下桌；偶数尾号：1/4/5/8上床下桌',
+        type:'eight',
+        avoid:'尾号01, 03, 05, 35, 37',
+        avoidNote:'这些尾号房间尽量避免',
+        maxFloor:6
+      },
+      {
+        no:'4号',capacity:8,layout:'混合布局',
+        detail:'奇尾号房间：4、8号床为上下床下铺，5、6号床为上下床上铺，其余1、2、3、7号床为上床下桌（两人一桌）\n偶尾号房间：3、7号床为上下床下铺，2、6号床为上下床上铺，其余1、4、5、8号床为上床下桌（两人一桌）',
+        deskNote:'奇数尾号：1/2/3/7上床下桌；偶数尾号：1/4/5/8上床下桌',
+        type:'eight',
+        avoid:'尾号01, 03, 05, 35, 37',
+        avoidNote:'这些尾号房间尽量避免',
+        maxFloor:6
+      }
+    ]
+  },
+  {
+    name:'匠心书院',
+    buildings:[
+      {
+        no:'5号',capacity:6,layout:'上床下铺（混合）',
+        detail:'仅3-4号床为单人单桌\n其余1、2、5、6号床为两人一桌',
+        deskNote:'3-4号床：单人单桌；其余：两人一桌',
+        type:'six',
+        avoid:'双数结尾的最后一个',
+        avoidNote:'房间号双数结尾的最后一间可能无阳台',
+        maxFloor:6
+      },
+      {
+        no:'6号',capacity:8,layout:'混合布局',
+        detail:'奇尾号房间：4、8号床为上下床下铺，5、6号床为上下床上铺，其余1、2、3、7号床为上床下桌（两人一桌）\n偶尾号房间：3、7号床为上下床下铺，2、6号床为上下床上铺，其余1、4、5、8号床为上床下桌（两人一桌）',
+        deskNote:'奇数尾号：1/2/3/7上床下桌；偶数尾号：1/4/5/8上床下桌',
+        type:'eight',
+        avoid:'尾号01, 03, 05, 39',
+        avoidNote:'这些尾号房间尽量避免',
+        maxFloor:6
+      },
+      {
+        no:'7号',capacity:8,layout:'混合布局',
+        detail:'奇尾号房间：4、8号床为上下床下铺，5、6号床为上下床上铺，其余1、2、3、7号床为上床下桌（两人一桌）\n偶尾号房间：3、7号床为上下床下铺，2、6号床为上下床上铺，其余1、4、5、8号床为上床下桌（两人一桌）',
+        deskNote:'奇数尾号：1/2/3/7上床下桌；偶数尾号：1/4/5/8上床下桌',
+        type:'eight',
+        avoid:'',
+        avoidNote:'有电梯，阳台基本100%覆盖',
+        maxFloor:12
+      }
+    ]
+  }
+];
+
+var curCollegeIndex=0;
+var drawnResult=null;
+
 var CONFIG = {
   student: { name:'张三',sid:'20240101001',college:'计算机科学与技术学院',major:'软件工程',className:'软工2401班',gender:'男',phone:'138****6789' },
   tuition: { amount:6250, term:'2024-2025学年 第一学期' },
@@ -424,22 +679,28 @@ var CONFIG = {
   ]
 };
 
-var state={step:1,payDone:false,selectedRoom:null,selectedBed:null,history:[],nameDone:false};
+var state={step:1,payDone:false,selectedRoom:null,selectedBed:null,history:[],nameDone:false,genRooms:[]};
 
 function showPage(id,title){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
   document.getElementById(id).classList.add('active');
   document.getElementById('navTitle').textContent=title||'抢宿舍模拟器';
-  document.getElementById('btnBack').style.display=id==='page-home'?'none':'';
+  document.getElementById('btnBack').style.display=(id==='page-home-new'||id==='page-calc')?'none':'';
   var nb=document.getElementById('navbar');
-  if(id==='page-home')nb.classList.remove('sub');else nb.classList.add('sub');
+  if(id==='page-home-new'||id==='page-calc')nb.classList.remove('sub');else nb.classList.add('sub');
+  var bn=document.getElementById('bottomNav');
+  if(id==='page-home-new'||id==='page-calc'){
+    bn.style.display='flex';
+    document.getElementById('navSim').classList.toggle('active',id==='page-home-new');
+    document.getElementById('navCalc').classList.toggle('active',id==='page-calc');
+  }else{bn.style.display='none'}
   document.getElementById('app').scrollTop=0;window.scrollTo(0,0);
 }
 
 function goBack(){
   clearInterval(window._pt);
   if(state.history.length>0){var p=state.history.pop();showPage(p.id,p.title);if(p.onEnter)p.onEnter()}
-  else showPage('page-home');
+  else{showPage('page-home-new','抢宿舍模拟器');state.history=[]}
 }
 
 function confirmName(){
@@ -463,10 +724,22 @@ function pushPage(id,title,fn){
 }
 
 function toast(m,d){d=d||2000;var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(function(){t.classList.remove('show')},d)}
-function showInfo(){pushPage('page-info','个人信息')}
+function showInfo(){
+  if(drawnResult){
+    document.getElementById('navTitle').textContent='个人信息';
+    var dr=drawnResult;
+    document.getElementById('drawnInfo').innerHTML=
+      '<div class="info-row"><span class="label">分配结果</span><span class="value" style="color:#1a56db;font-weight:800">'+dr.college.name+' '+dr.building.no+'楼 第'+dr.floor+'层</span></div>';
+  }
+  pushPage('page-info','个人信息');
+}
 
 function goPay(){if(state.step<2){toast('请先完善个人信息');return}pushPage('page-pay','缴费/绿色通道',startPay)}
-function goDorm(){if(!state.payDone){toast('请先完成学费缴纳');return}pushPage('page-room','选择房间',renderRooms)}
+function goDorm(){
+  if(!state.payDone){toast('请先完成学费缴纳');return}
+  if(!drawnResult){toast('请先在新主页完成宿舍分配');return}
+  pushPage('page-room','选择房间',renderRooms);
+}
 
 var feeChecked=[false,false,false,false,false];
 
@@ -542,11 +815,31 @@ function finishPay(){
 
 function renderRooms(){
   state.selectedRoom=null;
-  var h='';CONFIG.rooms.forEach(function(r){
+  if(!drawnResult){toast('请先分配宿舍');return}
+
+  var dr=drawnResult;
+  var bd=dr.building;
+  var cap=typeof bd.capacity==='number'?bd.capacity:8;
+  var floor=dr.floor;
+  var bno=parseInt(bd.no);
+
+  var rooms=[];
+  for(var r=1;r<=32;r++){
+    var roomNum=String(floor)+String(r).padStart(2,'0');
+    var beds=[];
+    for(var i=1;i<=cap;i++){beds.push({id:''+i,label:''+i,t:0})}
+    rooms.push({id:roomNum,name:roomNum+'室',floor:floor+'层',side:'',_rawNum:r,beds:beds});
+  }
+  state.genRooms=rooms;
+
+  var h='<div style="font-size:13px;color:#666;margin-bottom:10px;letter-spacing:2px">'
+    +dr.college.name+' '+bd.no+'楼 第'+floor+'层 &nbsp;('+rooms.length+'间)'
+    +'</div>';
+  rooms.forEach(function(r){
     var taken=r.beds.filter(function(b){return b.t}).length;
     var full=taken===r.beds.length;
     h+='<div class="room-card'+(full?' full':'')+'" data-room="'+r.id+'" onclick="selectRoom(\''+r.id+'\')">'
-      +'<div class="room-detail"><div class="room-name">'+r.id+' 房间</div></div>'
+      +'<div class="room-detail"><div class="room-name">'+r.name+'</div></div>'
       +'<span style="color:#ccc;font-size:16px">&#8250;</span></div>';
   });
   document.getElementById('roomList').innerHTML=h;
@@ -557,11 +850,12 @@ function goBed(){if(!state.selectedRoom){toast('请先选择一个房间');retur
 
 function renderBeds(){
   state.selectedBed=null;document.getElementById('btnSubmitBed').disabled=true;
-  var r=CONFIG.rooms.find(function(x){return x.id===state.selectedRoom});if(!r)return;
+  var r=state.genRooms.find(function(x){return x.id===state.selectedRoom});if(!r)return;
   document.getElementById('bedRoomLabel').innerHTML=r.name;
+
   var h='';r.beds.forEach(function(b){
     h+='<div class="bed-cell'+(b.t?' bed-taken':'')+'" data-bed="'+b.id+'" onclick="'+(b.t?'':'selectBed(\''+b.id+'\')')+'">'
-      +'<span class="bed-radio"></span>'+b.label+'号</div>';
+      +'<span class="bed-radio"></span>'+b.label+'号床</div>';
   });
   document.getElementById('bedGrid').innerHTML=h;
 }
@@ -570,22 +864,55 @@ function selectBed(id){state.selectedBed=id;document.querySelectorAll('.bed-cell
 
 function submitBed(){
   if(!state.selectedBed){toast('请选择一个床位');return}
-  var r=CONFIG.rooms.find(function(x){return x.id===state.selectedRoom});
+  var r=state.genRooms.find(function(x){return x.id===state.selectedRoom});
   var b=r.beds.find(function(x){return x.id===state.selectedBed});
   document.getElementById('doneRoom').textContent='房间：'+r.name;
-  document.getElementById('doneBed').textContent='床位：'+b.label;
+
+  var bedInfo='床位：'+b.label+'号床';
+  if(drawnResult){
+    var dr=drawnResult;
+    var bd=dr.building;
+    var roomNum=r.id;
+    var lastDigit=parseInt(roomNum.charAt(roomNum.length-1));
+    var isOdd=lastDigit%2===1;
+    var bedNum=parseInt(b.label);
+    var bedType='';
+
+    if(bd.type==='six'){
+      if(bedNum===3||bedNum===4){
+        bedType='单人单桌';
+      }else{
+        bedType='两人一桌';
+      }
+    }else if(bd.type==='eight'){
+      if(isOdd){
+        if(bedNum===4||bedNum===8) bedType='上下床的下铺';
+        else if(bedNum===5||bedNum===6) bedType='上下床的上铺';
+        else bedType='上床下桌（两人一桌）';
+      }else{
+        if(bedNum===3||bedNum===7) bedType='上下床的下铺';
+        else if(bedNum===2||bedNum===6) bedType='上下床的上铺';
+        else bedType='上床下桌（两人一桌）';
+      }
+    }
+
+    bedInfo='床位：'+b.label+'号床\n类型：'+bedType+'\n\n'+bd.layout+'\n'+bd.detail;
+  }
+  document.getElementById('doneBed').textContent=bedInfo;
+
   document.getElementById('wmOverlay').classList.add('show');
   var s3=document.getElementById('step3');s3.classList.remove('current');s3.classList.add('completed');
   s3.querySelector('.step-mark').innerHTML='&#9989;';
 }
 function closeWM(){
   document.getElementById('wmOverlay').classList.remove('show');
-  pushPage('page-done','提交成功');
+  if(window._wmCallback){window._wmCallback();window._wmCallback=null}
+  else pushPage('page-done','提交成功');
 }
 
 function resetAll(){
   document.getElementById('wmOverlay').classList.remove('show');
-  state.step=1;state.payDone=false;state.nameDone=false;  state.selectedRoom=null;state.selectedBed=null;state.history=[];clearInterval(window._pt);
+  state.step=1;state.payDone=false;state.nameDone=false;state.selectedRoom=null;state.selectedBed=null;state.history=[];state.genRooms=[];clearInterval(window._pt);
   feeChecked=[false,false,false,false,false];
   var s1=document.getElementById('step1');s1.classList.remove('completed');s1.classList.add('current');
   s1.querySelector('.step-mark').innerHTML='&#10071;';
@@ -595,7 +922,133 @@ function resetAll(){
   var s3=document.getElementById('step3');s3.classList.add('locked');s3.classList.remove('current','completed');
   s3.querySelector('.step-mark').innerHTML='&#10071;';
   s3.onclick=goDorm;
-  showPage('page-home');document.getElementById('btnBack').style.display='none';
+  showPage('page-home-new','抢宿舍模拟器');document.getElementById('btnBack').style.display='none';
+}
+
+function goHomeNew(){
+  state.history=[];clearInterval(window._pt);
+  retryDraw();
+}
+
+function randomAssign(){
+  var btn=document.getElementById('drawBtn');
+  if(btn.classList.contains('rolling'))return;
+  btn.classList.add('rolling');
+  btn.innerHTML='&#127922;<br>分配中';
+  document.getElementById('drawResult').style.display='none';
+  document.getElementById('drawRetry').style.display='none';
+
+  setTimeout(function(){
+    var ci=Math.floor(Math.random()*COLLEGE_DATA.length);
+    var c=COLLEGE_DATA[ci];
+    var b=c.buildings[Math.floor(Math.random()*c.buildings.length)];
+
+    var minF=b.no==='7号'?2:1;
+    var maxF=b.maxFloor||6;
+    var floor=Math.floor(Math.random()*(maxF-minF+1))+minF;
+
+    drawnResult={college:c,building:b,floor:floor};
+
+    var h='<div class="res-card">';
+    h+='<div class="res-label">分配结果</div>';
+    h+='<div class="res-college">'+c.name+'</div>';
+    h+='<div class="res-building">'+b.no+'楼</div>';
+    h+='<div class="res-floor">第'+floor+'层</div>';
+    h+='</div>';
+    h+='<div class="btn-wrap"><button class="btn btn-primary" onclick="goSimFromDraw()">进入选宿舍流程 &#8250;</button></div>';
+
+    document.getElementById('drawResult').innerHTML=h;
+    document.getElementById('drawResult').style.display='block';
+    document.getElementById('drawRetry').style.display='block';
+    btn.classList.remove('rolling');
+    btn.innerHTML='&#127922;<br>开始<br>分配';
+    document.getElementById('drawResult').scrollIntoView({behavior:'smooth'});
+  },800);
+}
+
+function retryDraw(){
+  drawnResult=null;
+  document.getElementById('drawResult').style.display='none';
+  document.getElementById('drawRetry').style.display='none';
+  var btn=document.getElementById('drawBtn');
+  btn.classList.remove('rolling');
+  btn.innerHTML='&#127922;<br>开始<br>分配';
+}
+
+function goSimFromDraw(){
+  if(!drawnResult){toast('请先分配宿舍');return}
+  state.history=[{id:'page-home-new',title:'抢宿舍模拟器'}];
+  showPage('page-home','抢宿舍模拟器');
+}
+
+function goBackHomeNew(){
+  state.history=[];clearInterval(window._pt);
+  showPage('page-home-new','抢宿舍模拟器');
+}
+
+function switchTab(t){
+  if(t==='sim') showPage('page-home-new','抢宿舍模拟器');
+  else showPage('page-calc','宿舍计算器');
+}
+
+function findBld(no){
+  for(var i=0;i<COLLEGE_DATA.length;i++){
+    var c=COLLEGE_DATA[i];
+    for(var j=0;j<c.buildings.length;j++){
+      if(c.buildings[j].no===no) return {college:c,building:c.buildings[j]};
+    }
+  }
+  return null;
+}
+
+function doCalc(){
+  var bl=document.getElementById('calcBld').value+'号';
+  var fl=parseInt(document.getElementById('calcFloor').value);
+  var rn=parseInt(document.getElementById('calcRoom').value);
+  var bn=parseInt(document.getElementById('calcBed').value);
+  var res=document.getElementById('calcResult');
+
+  if(isNaN(fl)||isNaN(rn)||isNaN(bn)){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">请填写完整信息</span>';return}
+
+  var fb=findBld(bl);
+  if(!fb){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">未找到对应楼栋</span>';return}
+
+  var bd=fb.building;
+  if(fl<1||fl>(bd.maxFloor||6)){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">'+bl+'楼仅'+bd.maxFloor+'层，楼层超出范围</span>';return}
+  if(rn<1||rn>32){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">宿舍号需在1-32之间</span>';return}
+  var cap=bd.capacity;
+  if(bn<1||bn>cap){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">'+bl+'楼为'+cap+'人间，床号需在1-'+cap+'之间</span>';return}
+
+  var roomSuffix=String(rn).padStart(2,'0');
+  var lastDigit=rn%10;
+  var isOdd=lastDigit%2===1;
+  var roomFull=String(fl)+roomSuffix;
+  var bedType='';
+
+  if(bd.type==='six'){
+    if(bn===3||bn===4) bedType='单人单桌';
+    else bedType='两人一桌';
+  }else if(bd.type==='eight'){
+    if(isOdd){
+      if(bn===4||bn===8) bedType='上下床的下铺';
+      else if(bn===5||bn===6) bedType='上下床的上铺';
+      else bedType='上床下桌（两人一桌）';
+    }else{
+      if(bn===3||bn===7) bedType='上下床的下铺';
+      else if(bn===2||bn===6) bedType='上下床的上铺';
+      else bedType='上床下桌（两人一桌）';
+    }
+  }
+
+  var collegeName=fb.college.name;
+  res.style.display='block';
+  res.innerHTML='<div style="font-size:15px;font-weight:800;color:#16a34a;margin-bottom:6px">'+collegeName+' '+bl+'楼 '+roomFull+'室 '+bn+'号床</div>'
+    +'<div>类型：<b>'+bedType+'</b></div>'
+    +'<div style="color:#666;margin-top:4px">'+bd.capacity+'人间 &nbsp; '+bd.layout+'</div>'
+    +'<div style="color:#999;font-size:11px;margin-top:10px">该结果仅供参考</div>';
+
+  window._wmCallback=function(){};
+  document.getElementById('wmOverlay').classList.add('show');
 }
 </script>
 
