@@ -578,18 +578,18 @@ var COLLEGE_DATA = [
     name:'润心书院',
     buildings:[
       {
-        no:'1号',capacity:6,layout:'上床下铺（混合）',
-        detail:'仅3-4号床为单人单桌\n其余1、2、5、6号床为两人一桌',
-        deskNote:'3-4号床：单人单桌；其余：两人一桌',
+        no:'1号',capacity:6,layout:'上床下桌+上下铺（混合）',
+        detail:'3-4号床：上床下桌+单桌\n1-2-5-6号床：上下铺+双人桌\n其中1、5为上铺，2、6为下铺',
+        deskNote:'3/4号：上床下桌+单桌；1/5：上下铺上铺+双人桌；2/6：上下铺下铺+双人桌',
         type:'six',
         avoid:'203, 205, 225, 227',
         avoidNote:'二楼无阳台（三楼对应303等同理）',
         maxFloor:6
       },
       {
-        no:'2号',capacity:6,layout:'上床下铺（混合）',
-        detail:'仅3-4号床为单人单桌\n其余1、2、5、6号床为两人一桌',
-        deskNote:'3-4号床：单人单桌；其余：两人一桌',
+        no:'2号',capacity:6,layout:'上床下桌+上下铺（混合）',
+        detail:'3-4号床：上床下桌+单桌\n1-2-5-6号床：上下铺+双人桌\n其中1、5为上铺，2、6为下铺',
+        deskNote:'3/4号：上床下桌+单桌；1/5：上下铺上铺+双人桌；2/6：上下铺下铺+双人桌',
         type:'six',
         avoid:'203, 205, 225, 227',
         avoidNote:'二楼无阳台（三楼对应303等同理）',
@@ -610,10 +610,11 @@ var COLLEGE_DATA = [
         maxFloor:6
       },
       {
-        no:'4号',capacity:8,layout:'混合布局',
-        detail:'奇尾号房间：4、8号床为上下床下铺，5、6号床为上下床上铺，其余1、2、3、7号床为上床下桌（两人一桌）\n偶尾号房间：3、7号床为上下床下铺，2、6号床为上下床上铺，其余1、4、5、8号床为上床下桌（两人一桌）',
-        deskNote:'奇数尾号：1/2/3/7上床下桌；偶数尾号：1/4/5/8上床下桌',
+        no:'4号',capacity:8,layout:'2-4层6人间上床下桌；1/5/6层8人间混合布局',
+        detail:'2-4层(6人间)：全部床位均为上床下桌+单桌\n\n1/5/6层(8人间)：\n奇尾号房间：4、8号床为上下床下铺，5、6号床为上下床上铺，其余1、2、3、7号床为上床下桌（两人一桌）\n偶尾号房间：3、7号床为上下床下铺，2、6号床为上下床上铺，其余1、4、5、8号床为上床下桌（两人一桌）',
+        deskNote:'2-4层：全部上床下桌+单桌；1/5/6层：奇数尾号1/2/3/7上床下桌，偶数尾号1/4/5/8上床下桌',
         type:'eight',
+        floorCaps:{1:8,2:6,3:6,4:6,5:8,6:8},
         avoid:'尾号01, 03, 05, 35, 37',
         avoidNote:'这些尾号房间尽量避免',
         maxFloor:6
@@ -624,9 +625,9 @@ var COLLEGE_DATA = [
     name:'匠心书院',
     buildings:[
       {
-        no:'5号',capacity:6,layout:'上床下铺（混合）',
-        detail:'仅3-4号床为单人单桌\n其余1、2、5、6号床为两人一桌',
-        deskNote:'3-4号床：单人单桌；其余：两人一桌',
+        no:'5号',capacity:6,layout:'上床下桌',
+        detail:'2-4层为男生，5-6层为女生\n全部床位均为上床下桌+单桌',
+        deskNote:'全部床位：上床下桌+单桌',
         type:'six',
         avoid:'双数结尾的最后一个',
         avoidNote:'房间号双数结尾的最后一间可能无阳台',
@@ -819,8 +820,8 @@ function renderRooms(){
 
   var dr=drawnResult;
   var bd=dr.building;
-  var cap=typeof bd.capacity==='number'?bd.capacity:8;
   var floor=dr.floor;
+  var cap=getBldCapacity(bd,floor);
   var bno=parseInt(bd.no);
 
   var rooms=[];
@@ -860,6 +861,38 @@ function renderBeds(){
   document.getElementById('bedGrid').innerHTML=h;
 }
 
+function getBedType(bd,roomNum,bedNum){
+  var bno=bd.no;
+  if(bno==='1号'||bno==='2号'){
+    var map={1:'上下铺上铺+双人桌',2:'上下铺下铺+双人桌',3:'上床下桌+单桌',4:'上床下桌+单桌',5:'上下铺上铺+双人桌',6:'上下铺下铺+双人桌'};
+    return map[bedNum]||'';
+  }
+  if(bno==='5号'){
+    return '上床下桌+单桌';
+  }
+  if(bno==='4号'){
+    var floorNum=Math.floor(parseInt(roomNum)/100);
+    if(floorNum===2||floorNum===3||floorNum===4)return '上床下桌+单桌';
+  }
+  if(bd.type==='six'){
+    if(bedNum===3||bedNum===4)return '单人单桌';
+    return '两人一桌';
+  }
+  if(bd.type==='eight'){
+    var lastDigit=parseInt(String(roomNum).slice(-1));
+    var isOdd=lastDigit%2===1;
+    if(isOdd){
+      if(bedNum===4||bedNum===8)return '上下床的下铺';
+      if(bedNum===5||bedNum===6)return '上下床的上铺';
+      return '上床下桌（两人一桌）';
+    }
+    if(bedNum===3||bedNum===7)return '上下床的下铺';
+    if(bedNum===2||bedNum===6)return '上下床的上铺';
+    return '上床下桌（两人一桌）';
+  }
+  return '';
+}
+
 function selectBed(id){state.selectedBed=id;document.querySelectorAll('.bed-cell').forEach(function(c){c.classList.remove('selected');if(c.dataset.bed===id)c.classList.add('selected')});document.getElementById('btnSubmitBed').disabled=false}
 
 function submitBed(){
@@ -872,29 +905,8 @@ function submitBed(){
   if(drawnResult){
     var dr=drawnResult;
     var bd=dr.building;
-    var roomNum=r.id;
-    var lastDigit=parseInt(roomNum.charAt(roomNum.length-1));
-    var isOdd=lastDigit%2===1;
     var bedNum=parseInt(b.label);
-    var bedType='';
-
-    if(bd.type==='six'){
-      if(bedNum===3||bedNum===4){
-        bedType='单人单桌';
-      }else{
-        bedType='两人一桌';
-      }
-    }else if(bd.type==='eight'){
-      if(isOdd){
-        if(bedNum===4||bedNum===8) bedType='上下床的下铺';
-        else if(bedNum===5||bedNum===6) bedType='上下床的上铺';
-        else bedType='上床下桌（两人一桌）';
-      }else{
-        if(bedNum===3||bedNum===7) bedType='上下床的下铺';
-        else if(bedNum===2||bedNum===6) bedType='上下床的上铺';
-        else bedType='上床下桌（两人一桌）';
-      }
-    }
+    var bedType=getBedType(bd, r.id, bedNum);
 
     bedInfo='床位：'+b.label+'号床\n类型：'+bedType+'\n\n'+bd.layout+'\n'+bd.detail;
   }
@@ -1001,6 +1013,11 @@ function findBld(no){
   return null;
 }
 
+function getBldCapacity(bd,floor){
+  if(bd.floorCaps&&bd.floorCaps[floor])return bd.floorCaps[floor];
+  return bd.capacity;
+}
+
 function doCalc(){
   var bl=document.getElementById('calcBld').value+'号';
   var fl=parseInt(document.getElementById('calcFloor').value);
@@ -1016,29 +1033,12 @@ function doCalc(){
   var bd=fb.building;
   if(fl<1||fl>(bd.maxFloor||6)){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">'+bl+'楼仅'+bd.maxFloor+'层，楼层超出范围</span>';return}
   if(rn<1||rn>32){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">宿舍号需在1-32之间</span>';return}
-  var cap=bd.capacity;
+  var cap=getBldCapacity(bd,fl);
   if(bn<1||bn>cap){res.style.display='block';res.innerHTML='<span style="color:#e53e3e">'+bl+'楼为'+cap+'人间，床号需在1-'+cap+'之间</span>';return}
 
   var roomSuffix=String(rn).padStart(2,'0');
-  var lastDigit=rn%10;
-  var isOdd=lastDigit%2===1;
   var roomFull=String(fl)+roomSuffix;
-  var bedType='';
-
-  if(bd.type==='six'){
-    if(bn===3||bn===4) bedType='单人单桌';
-    else bedType='两人一桌';
-  }else if(bd.type==='eight'){
-    if(isOdd){
-      if(bn===4||bn===8) bedType='上下床的下铺';
-      else if(bn===5||bn===6) bedType='上下床的上铺';
-      else bedType='上床下桌（两人一桌）';
-    }else{
-      if(bn===3||bn===7) bedType='上下床的下铺';
-      else if(bn===2||bn===6) bedType='上下床的上铺';
-      else bedType='上床下桌（两人一桌）';
-    }
-  }
+  var bedType=getBedType(bd, roomFull, bn);
 
   var collegeName=fb.college.name;
   res.style.display='block';
